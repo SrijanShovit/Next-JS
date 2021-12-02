@@ -1,5 +1,7 @@
-
+import User from '../components/user'
 //our component recieves props during build time
+//if we have to use component then don't use pages as components don't need
+//speical features provided to page like routing,getStaticProps
 function Users  ({users}){
     return (
         <>
@@ -8,8 +10,7 @@ function Users  ({users}){
                 users.map(user => {
                     return (
                         <div key={user.id}>
-                            <p>{user.name}</p>
-                            <p>{user.email}</p>
+                           <User user={user}/>
                         </div>
                     )
                 })
