@@ -15,6 +15,9 @@ export default function Home() {
      <Link href="/blog">
       <a>Blog</a>
      </Link>
+     <Link href="/posts">
+      <a>Posts</a>
+     </Link>
 
      {/* button to navigate to product list page */}
      <button onClick={handler}>
