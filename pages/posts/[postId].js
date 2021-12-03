@@ -1,13 +1,13 @@
-import {useRouter} from 'next/router'
+// import {useRouter} from 'next/router'
 
 function Post({post}){
-    const router = useRouter()
+    // const router = useRouter()
 
     //for pages not generated at build time this fallback version is shown then the page is  statically generated if fallback is true
-    if (router.isFallback){
-        return <h1>Loading...</h1>
-    }
-    console.log(post);
+    // if (router.isFallback){
+    //     return <h1>Loading...</h1>
+    // }
+    // console.log(post);
 
     //this is returned when fallback becomes false again
     return(
@@ -53,7 +53,7 @@ export async function getStaticPaths(){
             }
         ] ,
         // paths: paths,
-        fallback:true
+        fallback:'blocking'   //UI is blocked till new page is build and returned
     }
 }
 
