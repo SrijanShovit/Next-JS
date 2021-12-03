@@ -15,22 +15,32 @@ export default Post
 //here we need to specify what value of postId to take during build time as itis dynamic
 //we use getStaticPaths for that
 export async function getStaticPaths(){
-    
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts')
+    const data = await response.json()
+
+    const paths = data.map(post => {
+        return {
+            params:{
+                postId : `${post.id}`
+            }
+        }
+    })
     return {
         //this key tells what pages are statically generated at build time
         //it is an array of object
-        paths: [
-            {//each object has parameters key which is object 
-                //specifying the path id
-                //the id must be string
-                //3 objects as we have asked for 3 pgs
-                params:{ postId : '1'}
-            },{
-                params:{ postId : '2'}
-            },{
-                params:{ postId : '3'}
-            }
-        ] ,
+        // paths: [
+        //     {//each object has parameters key which is object 
+        //         //specifying the path id
+        //         //the id must be string
+        //         //3 objects as we have asked for 3 pgs
+        //         params:{ postId : '1'}
+        //     },{
+        //         params:{ postId : '2'}
+        //     },{
+        //         params:{ postId : '3'}
+        //     }
+        // ] ,
+        paths: paths,
         fallback:false
     }
 }
